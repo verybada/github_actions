@@ -3,7 +3,7 @@ name: Deploy to EC2
 on:
   workflow_call:
     inputs:
-      environment:
+      ENVIRONMENT:
         required: true
         type: string
       site:
@@ -13,8 +13,9 @@ on:
 jobs:
   deploy:
     name: deploy ${{ inputs.site }}
-    environment: ${{ inputs.environment }}
+    environment: ${{ inputs.ENVIRONMENT }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - run: echo ${{ inputs.site }}
+      - run: echo ${{ inputs.ENVIRONMENT }}

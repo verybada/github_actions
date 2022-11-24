@@ -17,17 +17,17 @@ jobs:
     needs: pack
     uses: ./.github/workflows/deploy_subworkflow.yml
     with:
-      environment: ${{ github.job }}
+      ENVIRONMENT: ${{ github.job }}
       site: ${{ github.job }}
   stg:
     needs: dev 
     uses: ./.github/workflows/deploy_subworkflow.yml
     with:
-      environment: ${{ github.job }}
+      ENVIRONMENT: ${{ github.job }}
       site: ${{ github.job }}
   prod:
     needs: stg
     uses: ./.github/workflows/deploy_subworkflow.yml
     with:
-      environment: ${{ github.job }}
+      ENVIRONMENT: ${{ github.job }}
       site: ${{ github.job }}
