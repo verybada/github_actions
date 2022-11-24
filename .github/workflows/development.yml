@@ -1,0 +1,11 @@
+name: development
+
+on:
+  push:
+    branches:
+      - '*/*'
+  pull_request:
+
+jobs:
+  check:
+    uses: ./.github/workflows/check_subworkflow.yml
