@@ -17,5 +17,4 @@ jobs:
     needs: pack
     uses: ./.github/workflows/deploy_subworkflow.yml
     with:
-      ENVIRONMENT: ${{ github.job }}
       site: dev
