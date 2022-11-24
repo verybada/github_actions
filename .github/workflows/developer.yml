@@ -1,0 +1,8 @@
+name: Developer Flow
+
+on:
+  pull_request:
+
+jobs:
+  check:
+    uses: ./.github/workflows/check.yml

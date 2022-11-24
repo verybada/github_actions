@@ -1,4 +1,4 @@
-name: Trunk
+name: Trunk Flow
 
 on:
   push:
@@ -7,14 +7,14 @@ on:
 
 jobs:
   check:
-    uses: ./.github/workflows/check_subworkflow.yml
+    uses: ./.github/workflows/check.yml
   pack:
     needs: check
-    uses: ./.github/workflows/pack_subworkflow.yml
+    uses: ./.github/workflows/pack.yml
     with:
       image_tag: latest
   dev:
     needs: pack
-    uses: ./.github/workflows/deploy_subworkflow.yml
+    uses: ./.github/workflows/deploy.yml
     with:
       site: dev
