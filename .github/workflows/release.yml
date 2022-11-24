@@ -1,0 +1,32 @@
+name: Release 
+
+on:
+  create:
+    tags:
+      - *
+
+jobs:
+  check:
+    uses: ./.github/workflows/check_subworkflow.yml
+  pack:
+    needs: check
+    uses: ./.github/workflows/pack_subworkflow.yml
+    with:
+      image_tag: ${{github.ref_name}}
+  dev:
+    needs: pack
+    uses: ./.github/workflows/deploy_subworkflow.yml
+    with:
+      site: ${{ github.job }}
+  stg:
+    needs: dev 
+    environment: stage
+    uses: ./.github/workflows/deploy_subworkflow.yml
+    with:
+      site: ${{ github.job }}
+  prod:
+    needs: stg
+    environment: prod
+    uses: ./.github/workflows/deploy_subworkflow.yml
+    with:
+      site: ${{ github.job }}
