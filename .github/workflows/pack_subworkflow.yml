@@ -1,0 +1,16 @@
+name: Build Docker Image 
+
+on:
+  workflow_call:
+    inputs:
+      image_tag:
+        required: true
+        type: string
+
+jobs:
+  build:
+    name: build binary
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: echo "build image" ${{ inputs.image_tag }}
