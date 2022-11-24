@@ -27,11 +27,13 @@ jobs:
         run: echo Test passed.
   dev:
     runs-on: ubuntu-latest
+    needs: test
     steps:
       - name: deploy/dev
         run: echo Dev deployed.
   stg:
     runs-on: ubuntu-latest
+    needs: dev
     environment: stage
     steps:
       - name: deploy/stg
