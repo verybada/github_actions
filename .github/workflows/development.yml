@@ -1,9 +1,6 @@
-name: development
+name: Development
 
 on:
-  push:
-    branches:
-      - '*/*'
   pull_request:
 
 jobs:
