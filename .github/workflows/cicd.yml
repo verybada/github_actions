@@ -38,3 +38,10 @@ jobs:
     steps:
       - name: deploy/stg
         run: echo Stg deployed
+  prod:
+    runs-on: ubuntu-latest
+    needs: stg
+    environment: prod
+    steps:
+      - name: deploy/prod
+        run: echo Prod deployed
